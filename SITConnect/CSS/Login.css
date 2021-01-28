@@ -1,0 +1,71 @@
+﻿.login-view {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100vh;
+}
+
+/* LOGIN/REGISTRATION PAGE */
+.bg-container-1 {
+    font-weight: bold;
+    background-image: linear-gradient(to top, #2fad8a, #4ab5af, #78bac4, #a4bfcb, #c5c6c7);
+    z-index: 2;
+    text-align: center;
+    padding: 0;
+    padding-bottom: 50px;
+    overflow: hidden;
+    border-radius: 5px;
+    border-width: 0.5px;
+    border-color: black;
+}
+
+.gallery-title {
+    padding-bottom: 0px !important;
+}
+
+.bg-container-1::before {
+    content: '';
+    border: 6px solid #ff0000;
+    width: 100%;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.forgot-password {
+    position: relative;
+    top: 5px;
+    color: rgba(0,0,0,0.7);
+    text-decoration: underline;
+    font-size: 16px;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .forgot-password:hover, .forgot-password:active, .forgot-password:focus {
+        color: rgba(0,0,0,1);
+        text-decoration: underline;
+        transition: 0.5s;
+    }
+
+.or {
+    position: relative;
+    top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.btn-signup {
+    color: rgba(0,0,0,0.7);
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .btn-signup:hover, .btn-signup:active, .btn-signup:focus {
+        color: rgba(0,0,0,1);
+        text-decoration: none;  
+        transition: 0.5s;
+    }

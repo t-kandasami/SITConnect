@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SITConnect.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <%
+            if (this.MainContent.Page.Title == "")
+            {%>
+    SITConnect
+    <%}
+        else
+        { %>
+        <%: Page.Title %> | SITConnect
+    <%} %>
+    </title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/398610509e.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js"></script>
+    <%--<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">--%>
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+        <div id="navbar" class="navbar navbar-inverse navbar-fixed-top scroll-unactive">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="icon-bar top-bar"></span>
+                        <span class="icon-bar middle-bar"></span>
+                        <span class="icon-bar bottom-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/"><span><i class="fas fa-pencil-alt logo-img"></i></span>&nbsp;SIT<span class="trippin">Connect</span></a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="/Login">Login</a></li>
+                        <li><a runat="server" href="/Registration"><span class="nav-signup-btn">Sign up</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <%if (this.MainContent.Page.Title == "")
+            {%>
+        <div id="gallery" class="gallery">
+            <img class="galleryImg" src="Media/pencilHolder.jpg" />
+        </div>
+        <div class="container-fluid bg-container">
+            <div class="row bg-text">
+                <h1 class="gallery-title">Welcome to
+                    <br />
+                    <span class="gallery-anim trippin">SITConnect
+                        </span>
+                </h1>
+                <h3 class="gallery-subtitle">A stationary store that sells affordable & good quality stationaries
+                    <br />
+                         to students & staff
+                </h3>
+            </div>
+            <div class="plan-btn-container">
+                <a class="plan-btn" href="/Login">Get Started Now<i style="padding-left: 10px" class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+        <%} %>
+
+        <div class="container body-content" <%if (MainContent.Page.Title == "") { %> style="display:none;"<%}%>>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+</body>
+<script>
+    $(document).ready(function () {
+        var scroll_start = 0;
+        var startchange = $('.body-content');
+        var offset = startchange.offset();
+        if (startchange.length) {
+            $(document).scroll(function () {
+                scroll_start = $(document).scrollTop();
+                if (scroll_start > offset.top) {
+                    $("#navbar").addClass("scroll-active");
+                    $('#navbar').removeClass("scroll-unactive");
+                } else {
+                    $("#navbar").removeClass("scroll-active");
+                    $('#navbar').addClass("scroll-unactive");
+                }
+            });
+        }
+    });
+</script>
+</html>

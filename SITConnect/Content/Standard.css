@@ -1,0 +1,393 @@
+﻿/* FONT IMPORTS */
+/* JetBrains Mono - 400, 700 */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+/* TEAL: 66FCF1 */
+
+
+.code {
+    color: #808080;
+    font-family: Consolas,monaco,monospace;
+}
+
+
+/* STANDARDISING CSS FOR ALL PAGES */
+.page-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 80px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                          supported by Chrome and Opera */
+}
+
+
+/* TOOLTIP STYLING */
+.tt-text {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tooltip {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 100;
+    font-size: 10px;
+}
+
+    .tooltip > .tooltip-inner {
+        background-color: black !important;
+        opacity: 0.8;
+    }
+
+    .tooltip > .tooltip-arrow {
+        border-bottom-color: black !important;
+        opacity: 0.8;
+    }
+
+
+/* STANDARDISE */
+.main-content {
+    margin-top: 10vh !important;
+    padding-bottom: 10vh !important;
+}
+
+/* btn-oval */
+.btn-oval {
+    position: relative;
+    bottom: 5px;
+    color: black;
+    text-decoration: none;
+    background: #66FCF1;
+    font-weight: bold;
+    padding: 7px 20px;
+    border-radius: 50px;
+    font-size: 22px;
+    transition: all ease 0.5s;
+}
+
+    .btn-oval:focus, .btn-oval:hover {
+        cursor: pointer;
+        bottom: 10px;
+        outline: none;
+        color: white;
+        text-decoration: none !important;
+        box-shadow: 3px 3px #ff0000;
+    }
+
+    .btn-oval i {
+        font-size: 20px;
+    }
+
+    .btn-oval span {
+        font-size: 20px;
+    }
+
+/* btn-rect */
+.btn-rect span {
+    background: white;
+    color: black;
+    font-weight: bold;
+    padding: 8px 12px 6px 12px !important;
+    -webkit-transition-duration: 0.5s;
+    box-shadow: 3px 3px #ff0000;
+    transition: all 0.5s;
+}
+
+    .btn-rect span:hover {
+        background: #8A2BE2;
+        color: white;
+        box-shadow: 3px 3px #ff0000;
+        transition: all 0.5s;
+    }
+
+/* btn-rect-icon */
+
+.btn-rect-icon {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    position: relative;
+    background: #66fcf1;
+    color: black;
+    bottom: 0px;
+    font-size: 18px;
+    padding: 12px 20px 10px 20px !important;
+    box-shadow: 3px 3px #ff0000;
+    transition: all 0.5s;
+}
+
+    .btn-rect-icon:hover, .btn-rect-icon:active, .btn-rect-icon:focus {
+        background: black;
+        color: #66fcf1;
+        bottom: 5px;
+        box-shadow: 3px 3px #ff0000;
+        transition: all 0.5s;
+    }
+
+
+/* btn-long (for login/registration)*/
+.btn-long {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    width: 100%;
+    position: relative;
+    background-color: #66fcf1;
+    color: black;
+    font-size: 18px;
+    padding: 10px 0px 8px 0px !important;
+    box-shadow: 3px 3px #ff0000;
+    transition: all 0.5s;
+}
+
+    .btn-long:hover, .btn-long:active, .btn-long:focus {
+        background-color: black;
+        color: #66fcf1;
+        box-shadow: 3px 3px #ff0000;
+    }
+
+
+/* MODAL */
+
+/* MODAL EDIT DEFAULT STYLES */
+.modal-dialog {
+    padding-right: 0px !important;
+    top: 25% !important;
+    box-shadow: 0 0 30px black;
+}
+
+.modal-open {
+    overflow: auto;
+    padding-right: 0 !important;
+}
+
+    .modal-open .navbar-fixed-top {
+        padding-right: 0 !important;
+    }
+
+    .modal-open body {
+        padding-right: 0 !important;
+    }
+
+/* REMOVE LINES FROM HEADER AND FOOTER MODAL DIVS */
+.modal-header {
+    border-bottom: 0 none !important;
+}
+
+.modal-footer {
+    border-top: 0 none !important;
+    text-align: center !important;
+}
+
+.modal-content {
+    color: black !important;
+    background-image: linear-gradient(to top, #2fad8a, #4ab5af, #78bac4, #a4bfcb, #c5c6c7);
+}
+
+.modal-title {
+    font-family: 'JetBrains Mono', monospace;
+    color: black !important;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    background: #66FCF1;
+    border-radius: 5px;
+    padding: 10px 0 10px 0;
+    margin-top: -3vh;
+    text-shadow: 2px 2px #ff0000;
+    box-shadow: 0 0 20px black;
+}
+
+.modal-body {
+    margin: 30px 50px 30px 50px;
+}
+
+    .modal-body p {
+        font-size: 17px !important;
+    }
+
+
+.form-icon {
+    position: absolute;
+    left: 25px;
+    margin-top: 35px;
+    color: #808080;
+    font-size: 22px;
+    -webkit-transition-duration: 0.5s;
+}
+
+.form-input {
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    border: 2px solid #808080;
+    outline: none;
+    padding: 10px 0px 10px 40px;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .form-input:hover, .form-input:focus {
+        outline: none;
+        border: 2px solid #00c6b7;
+        color: #00c6b7;
+        transition: 0.5s;
+    }
+
+        .form-input:hover + .form-icon, .form-input:focus + .form-icon {
+            color: #00c6b7 !important;
+            transition: 0.5s;
+        }
+
+.drp-calendar {
+    color: black !important;
+}
+
+.label {
+    color: black;
+    font-size: 20px;
+    margin-left: -10px;
+}
+
+.btn-start {
+    width: 83%;
+    background: #66FCF1;
+    color: black;
+    padding: 10px 0px 10px 0px;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 30px;
+    -webkit-transition-duration: 0.5s;
+    border-radius: 5px;
+    box-shadow: 3px 3px #ff0000;
+}
+
+    .btn-start:hover, .btn-start:active, .btn-start:focus {
+        color: #66FCF1;
+        background-color: black;
+        transition: 0.5s;
+    }
+
+/* END OF MODAL EDIT DEFAULT STYLES */
+
+
+/* COPY TEXT */
+.copy-text {
+    color: white;
+    text-decoration: underline;
+    font-size: 18px;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .copy-text:hover {
+        color: white;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+
+
+/* FORM INPUTS */
+.text-label {
+    color: black;
+    font-size: 20px;
+}
+
+.white {
+    color: white;
+}
+
+.black {
+    color: black;
+}
+
+.text-input {
+    font-size: 18px;
+    width: 100%;
+    border: none;
+    border: 2px solid #808080;
+    outline: none;
+    padding: 10px 0px 10px 40px;
+    color: black;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .text-input:hover, .text-input:focus {
+        outline: none;
+        border: 2px solid #00c6b7;
+        color: #00c6b7;
+        transition: 0.5s;
+    }
+
+        .text-input:hover + .text-icon, .text-input:focus + .text-icon {
+            color: #00c6b7 !important;
+            transition: 0.5s;
+        }
+
+.text-icon {
+    position: absolute;
+    left: 25px;
+    margin-top: 13px;
+    color: #808080;
+    font-size: 22px;
+    -webkit-transition-duration: 0.5s;
+}
+
+.text-input-big {
+    font-family: 'JetBrains Mono', monospace;
+    color: black;
+    background: white;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+    border-radius: 15px;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .text-input-big:focus, .text-input-big:hover {
+        outline: none;
+        background: #e0e0e0;
+        transition: 0.5s;
+    }
+
+.text-input-small i {
+    font-size: 24px;
+    color: black;
+}
+
+.text-input-small input {
+    font-size: 22px;
+    color: black;
+    background: white;
+    width: 300px;
+    padding-left: 10px;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    -webkit-transition-duration: 0.5s;
+}
+
+    .text-input-small input:focus, .text-input-small input:hover {
+        outline: none;
+        background: #e0e0e0;
+        transition: 0.5s;
+    }
