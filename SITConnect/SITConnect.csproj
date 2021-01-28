@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="App_Data\DBInit.sql" />
     <Content Include="App_Data\MYDB.mdf" />
     <Content Include="App_Data\MYDB_log.ldf">
       <DependentUpon>MYDB.mdf</DependentUpon>

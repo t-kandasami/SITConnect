@@ -10,29 +10,29 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <div class="container-fluid" style="height: 100vh; width: 600px;">
-        <%if (Page.Items["create_error"] != null)
-            {%>
-        <div style="z-index: 1; position: absolute; width; width: 100%;">
-            <div class="alert alert-danger fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <b>ERROR! </b></br><p style="font-weight: normal;">Login is invalid</p>
-            </div>
-        </div>
-        <%}%>
-        <%if (Page.Items["create_success"] != null)
-            {%>
-        <div style="z-index: 1; position: absolute; width; width: 100%;">
-            <div class="alert alert-success fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <b>SUCCESS! </b></br><p style="font-weight: normal;">Account is Created</p>
-            </div>
-        </div>
-        <%}%>
-
-
         <div class="row bg-text bg-container-1" style="position: relative; top: 8vh; margin-left: -100px; margin-right: -100px; padding-bottom: 2px;">
-            <div class="col-md-1"></div>
+
+            <div class="col-md-1">
+            </div>
             <div class="col-md-10 form-group" style="">
+                <%if (Page.Items["create_error"] != null)
+                    {%>
+                <div style="z-index: 1; position: absolute; width; width: 100%;">
+                    <div class="alert alert-danger fade in" style=" margin-right: 30px;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <b>ERROR! </b><%:Page.Items["create_error"]%><span id="ce_text" style="font-weight:normal" onload="create_error('<%:Page.Items["create_error"]%>')"></span>
+                    </div>
+                </div>
+                <%}%>
+                <%if (Page.Items["create_success"] != null)
+                    {%>
+                <div style="z-index: 1; position: absolute; width; width: 100%;">
+                    <div class="alert alert-success fade in" style=" margin-right: 30px;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <b>SUCCESS! </b><%:Page.Items["create_success"]%><span id="ce_text" style="font-weight:normal" onload="create_error('<%:Page.Items["create_success"]%>')"></span>
+                    </div>
+                </div>
+                <%}%>
                 <br />
                 <h1 class="gallery-title" style="color: black; text-shadow: 2px 2px #ff0000;">REGISTER</h1>
                 <br />
@@ -86,7 +86,7 @@
                 <br />
                 <br />
                 <%-- REGISTER BUTTON --%>
-                <asp:Button ID="regBtn" class="btn btn-long" runat="server" href="#" Text="Register"></asp:Button>
+                <asp:Button ID="regBtn" class="btn btn-long" runat="server" OnClick="regBtn_Click" Text="Register"></asp:Button>
                 <asp:Label runat="server" ID="lblMsg"></asp:Label>
                 <br />
                 <br />
