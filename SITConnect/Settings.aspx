@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Settings" Language="C#" MasterPageFile="~/Portal.Master" AutoEventWireup="true" CodeBehind="Settings.aspx.cs" Inherits="SITConnect.Settings" %>
+﻿<%@ Page Title="Settings" Language="C#" MasterPageFile="~/Portal.Master" AutoEventWireup="true" CodeBehind="Settings.aspx.cs" Inherits="SITConnect.Settings" ValidateRequest="false"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../Content/Standard.css" rel="stylesheet" type="text/css" />
@@ -13,19 +13,19 @@
                 <div class="modal-body">
                     <%if (Page.Items["create_error"] != null)
                         {%>
-                    <div style="z-index: 1; position: absolute; width: 100%;">
-                        <div class="alert alert-error fade in" style="margin-top: -80px; margin-right: 30px;">
+                    <div style="z-index: 1; position: absolute; width; width: 100%;">
+                        <div class="alert alert-danger fade in" style="margin-right: 30px;">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <b>ERROR! </b></br><p style="font-weight: normal;">Login is invalid</p>
+                            <b>ERROR! </b><span style="font-weight: normal"><%:Page.Items["create_error"]%></span><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_error"]%>')"></span>
                         </div>
                     </div>
                     <%}%>
                     <%if (Page.Items["create_success"] != null)
                         {%>
                     <div style="z-index: 1; position: absolute; width; width: 100%;">
-                        <div class="alert alert-success fade in" style="margin-top: -80px; margin-right: 30px;">
+                        <div class="alert alert-success fade in" style="margin-right: 30px;">
                             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <b>SUCCESS! </b></br><p style="font-weight: normal;">Account is Created</p>
+                            <b>SUCCESS! </b><span style="font-weight: normal"><%:Page.Items["create_success"]%></span><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_success"]%>')"></span>
                         </div>
                     </div>
                     <%}%>
@@ -51,11 +51,11 @@
                     </div>
                     <p id="pwdMsg" style="color: red;"></p>
                 </div>
-            <div class="modal-footer">
-                <asp:Button runat="server" CssClass="btn btn-start" ID="passwordSaveBtn" Text="Save Changes" />
+                <div class="modal-footer">
+                    <asp:Button runat="server" OnClick="passwordSaveBtn_Click" CssClass="btn btn-start" ID="passwordSaveBtn" Text="Save Changes" />
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <div class="profile-gallery">
@@ -78,9 +78,22 @@
     </div>
     <script>
         $(document).ready(function () {
+            <%if (Page.Items["showModal"] != null)
+        {%>
+            $('#modalChangePassword').modal('show');
+			<%}%>
+
             $('[data-toggle="tooltip"]').tooltip();
             $('#<%=passwordSaveBtn.ClientID%>').prop('disabled', true)
         });
+
+        <%if (Page.Items["openModal"] != null)
+        {%>
+        $('#modalChangePassword').modal({
+            backdrop: 'static',
+            keyboard: false
+        })
+        <%}%>
 
 
 

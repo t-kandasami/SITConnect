@@ -51,9 +51,27 @@
                 <a class="sidenav-brand" runat="server" href="~/"><span><i style="color: #66fcf1;" class="fas fa-pencil-alt sidenav-logo-img"></i></span><span class="sidenav-text">SIT<span class="trippin">Connect</span></span></a>
                 <a href="/Profile" <%if (this.MainContent.Page.Title == "Profile") { %> class="on-page" <%} %>><i class="fas fa-user-circle"></i> <span class="sidenav-text">Profile</span></a>
                 <a href="/Settings" <%if (this.MainContent.Page.Title == "Settings") { %> class="on-page" <%}%>><i class="fas fa-cogs"></i> <span class="sidenav-text">Settings</span></a>
-                <a runat="server" href="#" class="sidenav-bottom"><i class="fas fa-sign-out-alt"></i> <span class="sidenav-text">Sign Out</span></a>
+                <a runat="server" href="#" onserverclick="logoutBtn_Click" class="sidenav-bottom"><i class="fas fa-sign-out-alt"></i> <span class="sidenav-text">Sign Out</span></a>
             </div>
             <div id="main" class="main" <%if (MainContent.Page.Title == "") { %> style="display:none;"<%}%>>
+                <%if (Page.Items["create_error"] != null)
+                    {%>
+                <div style="z-index: 1; position: absolute; width; width: 100%;">
+                    <div class="alert alert-danger fade in" style=" margin-right: 0;margin-left: 100px;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <b>ERROR! </b><%:Page.Items["create_error"]%><span id="ce_text" style="font-weight:normal" onload="create_error('<%:Page.Items["create_error"]%>')"></span>
+                    </div>
+                </div>
+                <%}%>
+                <%if (Page.Items["create_success"] != null)
+                    {%>
+                <div style="z-index: 1; position: absolute; width; width: 100%;">
+                    <div class="alert alert-success fade in" style=" margin-right: 0;margin-left: 100px;">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <b>SUCCESS! </b><%:Page.Items["create_success"]%><span id="ce_text" style="font-weight:normal" onload="create_error('<%:Page.Items["create_success"]%>')"></span>
+                    </div>
+                </div>
+                <%}%>
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>

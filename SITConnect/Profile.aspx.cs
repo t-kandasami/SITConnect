@@ -35,6 +35,18 @@ namespace SITConnect
                     }
                     else
                     {
+                        if (Session["create_success"] != null)
+                        {
+                            Page.Items["create_success"] = Session["create_success"].ToString(); ;
+                            Session["create_success"] = null;
+                        }
+
+                        if (Session["create_error"] != null)
+                        {
+                            Page.Items["create_error"] = Session["create_error"].ToString();
+                            Session["create_error"] = null;
+
+                        }
                         displayUserProfile(email);
                     }
                 }
@@ -42,6 +54,26 @@ namespace SITConnect
             else
             {
                 Response.Redirect("~/Login", false);
+            }
+        }
+
+        protected void logoutBtn_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Session.RemoveAll();
+
+            Response.Redirect("Login.aspx", false);
+            if (Request.Cookies["ASP.NET_SessionId"] != null)
+            {
+                Response.Cookies["ASP.NET_SessionId"].Value = String.Empty;
+                Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddMonths(-20);
+            }
+
+            if (Request.Cookies["AuthToken"] != null)
+            {
+                Response.Cookies["AuthToken"].Value = String.Empty;
+                Response.Cookies["AuthToken"].Expires = DateTime.Now.AddMonths(-20);
             }
         }
 
@@ -54,22 +86,17 @@ namespace SITConnect
                 cipher.IV = IV;
                 cipher.Key = Key;
 
-                // Create a decrytor to perform the stream transform. 
                 ICryptoTransform decryptTransform = cipher.CreateDecryptor();
-                // Create the streams used for decryption
                 using (MemoryStream msDecrypt = new MemoryStream(cipherText))
                 {
                     using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptTransform, CryptoStreamMode.Read))
                     {
                         using (StreamReader srDecrypt = new StreamReader(csDecrypt))
                         {
-                            // Read the desrypted bytes from decrypting stream
-                            // and places them in a string 
                             plainText = srDecrypt.ReadToEnd();
                         }
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -207,29 +234,6 @@ namespace SITConnect
             }
         }
 
-        protected void changePwd_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Settings", false);
-        }
-
-        protected void logoutBtn_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Session.Abandon();
-            Session.RemoveAll();
-
-            Response.Redirect("Login.aspx", false);
-            if (Request.Cookies["ASP.NET_SessionId"] != null)
-            {
-                Response.Cookies["ASP.NET_SessionId"].Value = String.Empty;
-                Response.Cookies["ASP.NET_SessionId"].Expires = DateTime.Now.AddMonths(-20);
-            }
-
-            if (Request.Cookies["AuthToken"] != null)
-            {
-                Response.Cookies["AuthToken"].Value = String.Empty;
-                Response.Cookies["AuthToken"].Expires = DateTime.Now.AddMonths(-20);
-            }
-        }
+        
     }
 }

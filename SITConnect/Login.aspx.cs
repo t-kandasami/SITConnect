@@ -62,39 +62,31 @@ namespace SITConnect
 
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("Test 1");
                     if (dbSalt != null && dbSalt.Length > 0 && dbHash != null && dbHash.Length > 0)
                     {
-                        System.Diagnostics.Debug.WriteLine("Test 2");
                         string pwdWithSalt = pwd + dbSalt;
                         byte[] hashWithSalt = hashing.ComputeHash(Encoding.UTF8.GetBytes(pwdWithSalt));
                         string userHash = Convert.ToBase64String(hashWithSalt);
-                        
                         if (AccountExistsUsingEmail(email))
                         {
-                            System.Diagnostics.Debug.WriteLine("Test 3");
                             if (getAttempt(email) == "3")
                             {
-                                System.Diagnostics.Debug.WriteLine("Test 4");
                                 if (Convert.ToDateTime(getAttemptTime(email)) > DateTime.Now)
                                 {
-                                    System.Diagnostics.Debug.WriteLine("Test 5");
                                     // Account is locked
-                                    System.Diagnostics.Debug.WriteLine("Error - Account is Locked");
-                                    Page.Items["create_error"] = "Account is Locked. Please try again later";
-                                    errList.Add("Account is locked");
+                                    errList.Add("Account is Locked. Please try again later");
+                                    Response.Redirect("~/Login", false);
                                 }
                                 else
                                 {
-                                    System.Diagnostics.Debug.WriteLine("Test 6");
                                     UpdateAccountFailedAttempts(email, 1);
                                     UpdateDateTime(email, DateTime.Now);
+                                    errList.Add("Login is Invalid. Please try again");
+                                    Response.Redirect("~/Login", false);
                                 }
                             }
-
                             else if (userHash.Equals(dbHash))
                             {
-                                System.Diagnostics.Debug.WriteLine("Test 7");
                                 Session["UserEmail"] = email;
                                 UpdateAccountFailedAttempts(email, 0);
 
@@ -104,40 +96,40 @@ namespace SITConnect
                                 Response.Cookies.Add(new HttpCookie("AuthToken", guid));
                                 if (Convert.ToDateTime(getPasswordMaxAge(email)) < DateTime.Now)
                                 {
-                                    System.Diagnostics.Debug.WriteLine("Test 8");
                                     Response.Redirect("~/Settings", false);
                                 }
                                 else
                                 {
-                                    System.Diagnostics.Debug.WriteLine("Test 9");
                                     Response.Redirect("~/Profile", false);
                                 }
                             }
-
                             else if (getAttempt(email) == "2")
                             {
-                                System.Diagnostics.Debug.WriteLine("Test 10");
                                 int attempt = Convert.ToInt32(getAttempt(email)) + 1;
                                 UpdateAccountFailedAttempts(email, attempt);
                                 UpdateDateTime(email, DateTime.Now.AddMinutes(1));
+                                errList.Add("Login is Invalid. Please try again");
+                                Response.Redirect("~/Login", false);
                             }
                             else
                             {
-                                System.Diagnostics.Debug.WriteLine("Test 11");
                                 int attempt = Convert.ToInt32(getAttempt(email)) + 1;
                                 UpdateAccountFailedAttempts(email, attempt);
+                                errList.Add("Login is Invalid. Please try again");
                                 Response.Redirect("~/Login", false);
                             }
                         }
                     }
                     else
                     {
-                        System.Diagnostics.Debug.WriteLine("Test 12");
-                        System.Diagnostics.Debug.WriteLine("Error - Login is invalid");
-                        Page.Items["create_error"] = "Login is Invalid. Please try again";
                         errList.Add("Login is Invalid. Please try again");
                     }
-                    System.Diagnostics.Debug.WriteLine("Error List: " + errList.ToString());
+
+                    foreach(var item in errList)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Error List: " + item.ToString());
+                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -145,12 +137,9 @@ namespace SITConnect
                 }
 
                 finally {
-                    System.Diagnostics.Debug.WriteLine("Error List: " + errList.ToString());
                     if (errList.Count > 0)
                     {
                         Session["create_error"] = String.Join(",", errList);
-                        Page.Items["create_error"] = "Login is Invalid. Please try again";
-                        System.Diagnostics.Debug.WriteLine("Login is Invalid. Please try again");
                         Response.Redirect("~/Login", false);
                     }
                     
@@ -158,8 +147,6 @@ namespace SITConnect
             }
 
         }
-
-        
 
         public bool ValidateCaptcha()
         {
@@ -189,7 +176,6 @@ namespace SITConnect
 
         protected string getDBHash(string email)
         {
-
             string h = null;
             SqlConnection connection = new SqlConnection(MYDBConnectionString);
             string sql = "select account_passwordHash FROM Account WHERE account_email=@EMAIL";
@@ -317,18 +303,14 @@ namespace SITConnect
         {
             try
             {
-
                 SqlConnection myConn = new SqlConnection(MYDBConnectionString);
 
-                // Create a DataAdapter to retrieve data from the database table
                 string sqlStmt = "Select * from Account where account_email = @paraEmail";
                 SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn);
                 da.SelectCommand.Parameters.AddWithValue("@paraEmail", email);
 
-                // Create a DataSet to store the data to be retrieved
                 DataSet ds = new DataSet();
 
-                // Use the DataAdapter to fill the DataSet with data retrieved
                 da.Fill(ds);
 
 

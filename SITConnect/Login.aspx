@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SITConnect.Login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="SITConnect.Login" ValidateRequest="false"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -18,7 +18,7 @@
                 <div style="z-index: 1; position: absolute; width; width: 100%;">
                     <div class="alert alert-danger fade in" style="margin-right: 30px;">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <b>ERROR! </b><%:Page.Items["create_error"]%><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_error"]%>')"></span>
+                        <b>ERROR! </b><span style="font-weight: normal"><%:Page.Items["create_error"]%></span><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_error"]%>')"></span>
                     </div>
                 </div>
                 <%}%>
@@ -27,7 +27,7 @@
                 <div style="z-index: 1; position: absolute; width; width: 100%;">
                     <div class="alert alert-success fade in" style="margin-right: 30px;">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <b>SUCCESS! </b><%:Page.Items["create_success"]%><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_success"]%>')"></span>
+                        <b>SUCCESS! </b><span style="font-weight: normal"><%:Page.Items["create_success"]%></span><span id="ce_text" style="font-weight: normal" onload="create_error('<%:Page.Items["create_success"]%>')"></span>
                     </div>
                 </div>
                 <%}%>

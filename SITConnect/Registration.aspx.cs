@@ -22,16 +22,25 @@ namespace SITConnect
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["create_error"] != null)
+            if (Session["UserEmail"] == null)
             {
-                Page.Items["create_error"] = Session["create_error"].ToString();
-                Session["create_error"] = null;
+                if (Session["create_error"] != null)
+                {
+                    Page.Items["create_error"] = Session["create_error"].ToString();
+                    Session["create_error"] = null;
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Profile", false);
             }
         }
 
         protected void regBtn_Click(object sender, EventArgs e)
         {
             bool validInput = ValidateInput();
+
+            List<String> errList = new List<string>();
 
             if (validInput)
             {
@@ -55,15 +64,13 @@ namespace SITConnect
 
                 createAccount();
 
-                if (Session["create_error"] != null)
-                {
-                    Response.Redirect("~/Registration", false);
-                }
-                else
-                {
-                    Session["create_success"] = "Account is Created Successfully";
-                    Response.Redirect("~/Login", false);
-                }
+                Session["create_success"] = "Account is Created Successfully";
+                Response.Redirect("~/Login", false);
+                
+            }
+            else
+            {
+                Response.Redirect("~/Registration", false);
             }
         }
 
@@ -108,14 +115,12 @@ namespace SITConnect
         {
             try
             {
-
                 SqlConnection myConn = new SqlConnection(MYDBConnectionString);
                 string sqlStmt = "Select * from Account where account_email = @Email";
                 SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn);
                 da.SelectCommand.Parameters.AddWithValue("@Email", email);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
-
 
                 int record = ds.Tables[0].Rows.Count;
 
@@ -162,58 +167,48 @@ namespace SITConnect
 
             if (AccountExistsUsingEmail(emailTB.Text) == true)
             {
-                Page.Items["create_error"] += "Account Exists";
-                errList.Add("Account Exists");
+                errList.Add("Registration is Invalid. Account Exists");
             }
             if (String.IsNullOrEmpty(fnameTB.Text))
             {
-                Page.Items["create_error"] += "First Name is required";
                 errList.Add("First Name is required");
             }
             if (String.IsNullOrEmpty(lnameTB.Text))
             {
-                Page.Items["create_error"] += "Last Name is required";
                 errList.Add("Last Name is required");
             }
             if (String.IsNullOrEmpty(ccardTB.Text))
             {
-                Page.Items["create_error"] += "Credit Card Number is required";
                 errList.Add("Credit Card Number is required");
             }
             if (String.IsNullOrEmpty(emailTB.Text))
             {
-                Page.Items["create_error"] += "Email is required";
                 errList.Add("Email is required");
             }
             if (String.IsNullOrEmpty(pwdTB.Text))
             {
-                Page.Items["create_error"] += "Password is required";
                 errList.Add("Password is required");
             }
             if (String.IsNullOrEmpty(conpwdTB.Text))
             {
-                Page.Items["create_error"] += "Retype your password";
                 errList.Add("Retype your password");
             }
             if (String.IsNullOrEmpty(dobTB.Text))
             {
-                Page.Items["create_error"] += "Date of Birth is required";
                 errList.Add("Date of Birth is required");
             }
             if (scores < 4)
             {
-                Page.Items["create_error"] += "Password is not accepted";
                 errList.Add("Password is not accepted");
             }
             if (pwdTB.Text != conpwdTB.Text)
             {
-                Page.Items["create_error"] += "Passwords do not match";
                 errList.Add("Passwords do not match");
             }
 
             if (errList.Count > 0)
             {
-                Page.Items["create_error"] = String.Join(",", errList);
+                Session["create_error"] = String.Join(",", errList);
                 return false;
             }
             else
