@@ -189,33 +189,6 @@ h3.gallery-subtitle {
     -webkit-filter: blur(2px) brightness(50%) !important;
 }
 
-/* GALLERY ANIM */
-/*.gallery-title .gallery-anim {
-    background-image: -webkit-linear-gradient(left, #6E1BD4 50%, white 50%);
-    background-repeat: repeat;
-    background-position: 0 0;
-    background-size: 100% 200px;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-animation: stripes 3s linear infinite;
-    animation: stripes 3s linear infinite;
-}
-
-@-webkit-keyframes stripes {
-    100% {
-        background-position: 0 -50px;
-    }
-}
-
-@keyframes stripes {
-    100% {
-        background-position: 540px 0;
-    }
-}*/
-
-
-/* END OF GALLERY ANIM */
-
 .bg-container {
     color: white;
     font-weight: bold;
@@ -295,54 +268,6 @@ a.plan-btn {
         filter: brightness(0.7);
     }
 
-
-/* FOOTER */
-footer div {
-    width: 100%;
-    text-align: left;
-}
-
-.footer-title {
-    font-size: 18px;
-    margin-bottom: -15px;
-    font-weight: bold;
-}
-
-.footer-underline {
-    text-align: left;
-    margin-left: 0;
-    border-color: #6E1BD4;
-}
-
-.footer-socials {
-    padding: 15px 0px 5px 0px;
-}
-
-.social-fa-icon {
-    display: inline-block;
-    padding: 15px 15px 15px 15px;
-    font-size: 25px;
-    width: 55px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-    margin: 5px 10px;
-}
-
-
-/* Footer links */
-.footer-links p a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Footer Copyright */
-.footer-copyright {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 30px 0 30px 0;
-}
-
-
 /* Responsive: Portrait tablets and up */
 /*@media screen and (min-width: 769px) {*/
 @media screen and (min-width: 1000px) {
@@ -386,7 +311,6 @@ footer div {
     font-family: 'JetBrains Mono', monospace;
     font-weight:200;
     height: 100%;
-    /*width: 300px;*/
     width: 90px;
     position: fixed;
     top: 0;

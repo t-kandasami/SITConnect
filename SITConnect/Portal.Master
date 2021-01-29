@@ -22,7 +22,7 @@
     <%--<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">--%>
     <webopt:bundlereference runat="server" path="~/Content/css" />
     <link href="~/Content/Standard.css" rel="stylesheet" type="text/css" />
-    <%--<link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
     <form id="form1" runat="server" EncType="multipart/form-data">

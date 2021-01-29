@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Registration" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="SITConnect.Registration" ValidateRequest="false"%>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="CSS/Default.css" rel="stylesheet" type="text/css" />
     <link href="Content/Standard.css" rel="stylesheet" type="text/css" />
     <link href="CSS/Login.css" rel="stylesheet" type="text/css" />
 
@@ -54,7 +53,7 @@
                     <br />
                 </div>
                 <asp:Label runat="server" class="text-label text-label-half" AssociatedControlID="dobTB">Date of Birth</asp:Label>
-                <asp:TextBox runat="server" class="text-input text-input-secondhalf text-input-secondhalf-icon" type="text" ID="dobTB" placeholder="Enter birthdate" required="required"></asp:TextBox>
+                <asp:TextBox runat="server" Cssclass="text-input" type="text" ID="dobTB" placeholder="Enter birthdate" required="required"></asp:TextBox>
                 <i class="fas fa-calendar text-icon"></i>
                 <br />
                 <br />
