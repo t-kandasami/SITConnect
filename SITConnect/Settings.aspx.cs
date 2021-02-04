@@ -297,8 +297,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();
@@ -328,8 +328,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();
@@ -359,8 +359,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();

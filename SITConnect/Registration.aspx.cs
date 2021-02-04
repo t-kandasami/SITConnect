@@ -96,8 +96,8 @@ namespace SITConnect
                 cmd.Parameters.AddWithValue("@Key", Convert.ToBase64String(Key));
                 cmd.Parameters.AddWithValue("@InvalidAttempts", HttpUtility.HtmlEncode(0));
                 cmd.Parameters.AddWithValue("@LastInvalidTime", DateTime.Now);
-                cmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
-                cmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
+                cmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
+                cmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
 
                 myConn.Open();
                 int result = cmd.ExecuteNonQuery();
