@@ -96,8 +96,8 @@ namespace SITConnect
                 cmd.Parameters.AddWithValue("@Key", Convert.ToBase64String(Key));
                 cmd.Parameters.AddWithValue("@InvalidAttempts", HttpUtility.HtmlEncode(0));
                 cmd.Parameters.AddWithValue("@LastInvalidTime", DateTime.Now);
-                cmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
-                cmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
+                cmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
+                cmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
 
                 myConn.Open();
                 int result = cmd.ExecuteNonQuery();
@@ -107,7 +107,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -135,7 +137,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return false;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -153,7 +157,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return null;
+                //throw new Exception(ex.ToString());
             }
             finally { }
             return cipherText;

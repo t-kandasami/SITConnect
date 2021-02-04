@@ -100,7 +100,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally { }
             return plainText;
@@ -133,7 +134,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -169,7 +171,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -226,7 +229,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {

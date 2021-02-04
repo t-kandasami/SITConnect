@@ -155,7 +155,7 @@ namespace SITConnect
             string captchaResponse = Request.Form["g-recaptcha-response"];
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://www.google.com/recaptcha/api/siteverify?secret=6LeZpuQZAAAAAJAEDF_iw7RPNnIe75QarGA23O0S &response=" + captchaResponse);
             try
-            {
+            {   
                 using (WebResponse wResponse = req.GetResponse())
                 {
                     using (StreamReader readStream = new StreamReader(wResponse.GetResponseStream()))
@@ -170,7 +170,9 @@ namespace SITConnect
             }
             catch (WebException ex)
             {
-                throw ex;
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return false;
+                //throw ex;
             }
         }
 
@@ -200,7 +202,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return null;
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -236,7 +240,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return null;
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -267,7 +273,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -293,7 +301,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -327,7 +337,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return false;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -358,7 +370,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+//                throw new Exception(ex.ToString());
             }
             finally
             {
@@ -394,7 +407,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -430,7 +444,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {

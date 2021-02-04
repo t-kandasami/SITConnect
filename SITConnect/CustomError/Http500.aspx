@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Page Error 500" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="GenericError.aspx.cs" Inherits="SITConnect.CustomError.Http500" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="CSS/Default.css" rel="stylesheet" type="text/css" />
-    <link href="Content/Standard.css" rel="stylesheet" type="text/css" />
+    <link href="../CSS/Default.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Standard.css" rel="stylesheet" type="text/css" />
 
     <div class="container-fluid" style="height: 100vh;">
         <div class="row bg-text bg-container-1" style="position: relative; top: 8vh; padding-bottom: 2px;">

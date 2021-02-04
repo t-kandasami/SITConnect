@@ -202,7 +202,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -238,7 +239,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -276,7 +278,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return false;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -293,8 +297,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();
@@ -305,7 +309,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -322,8 +328,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();
@@ -334,7 +340,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -351,8 +359,8 @@ namespace SITConnect
 
                 sqlCmd.Parameters.AddWithValue("@Email", email);
                 sqlCmd.Parameters.AddWithValue("@account_passwordHash", finalHash);
-                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(5));
-                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(15));
+                sqlCmd.Parameters.AddWithValue("@PasswordMinAge", DateTime.Now.AddMinutes(1));
+                sqlCmd.Parameters.AddWithValue("@PasswordMaxAge", DateTime.Now.AddMinutes(5));
                 myConn.Open();
 
                 int result = sqlCmd.ExecuteNonQuery();
@@ -363,7 +371,9 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                return 0;
+                //throw new Exception(ex.ToString());
             }
         }
 
@@ -394,7 +404,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -430,7 +441,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -466,7 +478,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
@@ -502,7 +515,8 @@ namespace SITConnect
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                Response.Redirect("~/CustomError/Http500.aspx", true);
+                //throw new Exception(ex.ToString());
             }
             finally
             {
