@@ -15,7 +15,7 @@
         </div>
         <div class="user-info">
             <h1 class="user-name">
-                <span class="trippin"><asp:Label runat="server" ID="lbl_username">ABC</asp:Label></span>
+                <span class="trippin"><asp:Label runat="server" ID="lbl_username">Profile</asp:Label></span>
             </h1>
         </div>
         <div class="user-stuff">
